@@ -1,18 +1,9 @@
-// Importing necessary dependencies and components
-import {
-  Helmet,
-  Form,
-  useState,
-  Button,
-  useContext,
-  Store,
-  useNavigate,
-  useEffect,
-  CheckoutSteps,
-  SAVE_SHIPPING_ADDRESS,
-} from '../Imports';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Store } from '../store';
+import CheckoutSteps from '../components/CheckoutSteps';
+import { Form, Button } from 'react-bootstrap';
 
-// Creating a functional component called ShippingAddressPage
 const ShippingAddressPage = () => {
   // Accessing React hooks for navigation and global state management
   const navigate = useNavigate();
@@ -44,7 +35,7 @@ const ShippingAddressPage = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     ctxDispatch({
-      type: SAVE_SHIPPING_ADDRESS,
+      type: "SAVE_SHIPPING_ADDRESS",
       payload: {
         fullName,
         address,
@@ -68,9 +59,7 @@ const ShippingAddressPage = () => {
 
   return (
     <div>
-      <Helmet>
-        <title>Shipping Address</title>
-      </Helmet>
+      <title>Shipping Address</title>
       <CheckoutSteps step1 step2 />
       <div className="container small-container">
         <h1 className="my-3">Shipping Address</h1>
@@ -125,5 +114,4 @@ const ShippingAddressPage = () => {
     </div>
   );
 };
-
 export default ShippingAddressPage;
